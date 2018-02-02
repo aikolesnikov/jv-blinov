@@ -16,7 +16,6 @@ public class Intro_1_1 {
     }
 
     private static void greatUser(String name) {
-
         System.out.println("Hi, " + name);
     }
 
