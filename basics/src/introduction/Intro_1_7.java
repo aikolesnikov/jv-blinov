@@ -1,6 +1,4 @@
 /*
-1. 7. Ввести с консоли n целых чисел. На консоль вывести:
-Четные и нечетные числа.
 Наибольшее и наименьшее число.
 Числа, которые делятся на 3 или на 9.
 Числа, которые делятся на 5 и на 7.
@@ -24,33 +22,105 @@
 
 package introduction;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Intro_1_7 {
 
-    public static void main(String[] args) throws Exception{
 
-        int n = 0;
-        try {
-            Scanner sc = new Scanner(System.in);
-            n = sc.nextInt();
-        } catch (Exception e) {
-            e.printStackTrace();
+    private static int getMax(int[] intAr) {
+
+        int max = intAr[0];
+
+
+        for (int i = 1; i < intAr.length; i++) {
+            if (intAr[i] > max)
+                max = intAr[i];
         }
 
-        int[] iAr = new int[n];
+        return max;
+    }
 
-        for (int i = 0; i < n; i++) {
-            Scanner sc = new Scanner(System.in);
-            try{
-                iAr[i] = sc.nextInt();
-            } catch (Exception e){
-                // e.printStackTrace();
-            }
+
+    private static int getMin(int[] intAr) {
+
+        int min = intAr[0];
+
+
+        for (int i = 1; i < intAr.length; i++) {
+            if (intAr[i] < min)
+                min = intAr[i];
         }
 
-        System.out.println(Arrays.toString(iAr));
+        return min;
+    }
+
+    private static ArrayList<Integer> getOdd(int[] intAr) {
+
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+
+        for (int x : intAr) {
+            if (x % 2 != 0)
+                integerArrayList.add(x);
+        }
+
+        return integerArrayList;
+    }
+
+    private static ArrayList<Integer> getEven(int[] intAr) {
+
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+
+        for (int x : intAr) {
+            if (x % 2 == 0)
+                integerArrayList.add(x);
+        }
+
+        return integerArrayList;
+    }
+
+    private static int[] inputData() {
+
+
+        //        int n = 0;
+//        try {
+//            Scanner sc = new Scanner(System.in);
+//            n = sc.nextInt();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        int[] iAr = new int[n];
+//
+//        for (int i = 0; i < n; i++) {
+//            Scanner sc = new Scanner(System.in);
+//            try {
+//                iAr[i] = sc.nextInt();
+//            } catch (Exception e) {
+//                // e.printStackTrace();
+//            }
+//        }
+
+        int[] iAr = new int[new Random(System.currentTimeMillis()).nextInt(9) + 1];  // 1-10
+        for (int i = 0; i < iAr.length; i++) {
+            iAr[i] = new Random().nextInt(100);
+        }
+
+        return iAr;
+    }
+
+
+    public static void main(String[] args) throws Exception {
+
+        int[] intArr = inputData();
+
+        System.out.println("Array: " + Arrays.toString(intArr));
+        System.out.println();
+
+        System.out.println("Even: " + getEven(intArr));
+        System.out.println("Odd: " + getOdd(intArr));
+        System.out.println("Min: " + getMin(intArr));
+        System.out.println("Max: " + getMax(intArr));
+
     }
 
 }
