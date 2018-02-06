@@ -1,8 +1,6 @@
 /*
 
 7. Наибольший общий делитель и наименьшее общее кратное этих чисел.
-8. Простые числа. (isProbablePrime)
-9. Отсортированные числа в порядке возрастания и убывания.
 10. Числа в порядке убывания частоты встречаемости чисел.
 11. «Счастливые» числа.
 12. Числа Фибоначчи: f0 = f1 = 1, f (n) = f (n–1) + f (n–2).
@@ -17,18 +15,103 @@
 
 package introduction;
 
+import java.math.BigInteger;
 import java.util.*;
 
 public class Intro_1_7 {
 
+    private static ArrayList<Integer> getPrimes(int count) {
+
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+
+        int i = 0;
+        int primeQty = 0;
+        while (primeQty < count) {
+            if ((new BigInteger("" + i).isProbablePrime(1))) {
+                integerArrayList.add(i);
+                primeQty++;
+            }
+            i++;
+        }
+
+        return integerArrayList;
+    }
+
+    private static ArrayList<Integer> getPrimesInRange(int rangeFrom, int rangeTo) {
+
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+
+        for (int x = rangeFrom; x < rangeTo; x++) {
+            if ((new BigInteger("" + x).isProbablePrime(1))) {
+                integerArrayList.add(x);
+            }
+        }
+
+        return integerArrayList;
+    }
+
+    // 8. Простые числа. (isProbablePrime)
+    private static ArrayList<Integer> getPrimes(int[] intAr) {
+
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+
+        for (int x : intAr) {
+            if ((new BigInteger("" + x).isProbablePrime(1))) {
+                integerArrayList.add(x);
+            }
+        }
+
+        return integerArrayList;
+    }
+
+    // 9. Отсортированные числа в порядке возрастания и убывания.
+    private static int[] getSortedByMode(int[] intAr, boolean mode) {
+
+        int[] arr = Arrays.copyOf(intAr, intAr.length);
+
+        int n = arr.length;
+        int temp;
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n - i); j++) {
+                if (mode) {
+                    if (arr[j - 1] > arr[j]) {
+                        temp = arr[j - 1];
+                        arr[j - 1] = arr[j];
+                        arr[j] = temp;
+                    }
+                } else {
+                    if (arr[j - 1] < arr[j]) {
+                        temp = arr[j - 1];
+                        arr[j - 1] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+        }
+
+        return arr;
+    }
 
     // Все трехзначные числа, в десятичной записи которых нет одинаковых цифр.
+    private static ArrayList<Integer> getTripleAndUnique(int[] intAr) {
+
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+
+        for (int x : intAr) {
+            if (isTripleAndUnique(x)) {
+                integerArrayList.add(x);
+            }
+        }
+
+        return integerArrayList;
+    }
+
     private static boolean isTripleAndUnique(int x) {
         if (x < 100 || x > 999) return false;
 
         String s = Integer.toString(x);
 
-        return s.charAt(0)!=s.charAt(1) && s.charAt(0)!=s.charAt(2) && s.charAt(1)!=s.charAt(2);
+        return s.charAt(0) != s.charAt(1) && s.charAt(0) != s.charAt(2) && s.charAt(1) != s.charAt(2);
     }
 
     // Элементы, расположенные методом пузырька по убыванию модулей.
@@ -174,8 +257,15 @@ public class Intro_1_7 {
         System.out.println("Div_3_9: " + getDividedByThreeOrNine(intArr));
         System.out.println("Div_5_7: " + getDividedByFiveAndSeven(intArr));
         System.out.println("Sorted by module:" + Arrays.toString(getBubleSortByModule(intArr)));
+        System.out.println("Sorted by Mode:" + Arrays.toString(getSortedByMode(intArr, true)));
+        System.out.println("Sorted by Mode:" + Arrays.toString(getSortedByMode(intArr, false)));
+        System.out.println("Primes:" + getPrimes(intArr));
+        System.out.println(getPrimesInRange(1000, 2000));
+        System.out.println(getPrimes(508));
 
-        System.out.println(isTripleAndUnique(4567));
+        // System.out.println(isTripleAndUnique(4567));
+
+
     }
 
 }

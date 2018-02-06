@@ -1,9 +1,9 @@
-package introduction;
+package introduction.tasks;
 
 /**
  * book tasks
  */
-public class Intro_1_tasks {
+public class Intro_1_task {
 
     public static void main(String[] args) {
         String s; // 1
