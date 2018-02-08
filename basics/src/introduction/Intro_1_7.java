@@ -212,7 +212,7 @@ public class Intro_1_7 {
         return integerArrayList;
     }
 
-    private static int[] inputData() {
+    public static int[] inputData() {
 
 
         //        int n = 0;
@@ -236,7 +236,8 @@ public class Intro_1_7 {
 
         int[] iAr = new int[new Random(System.currentTimeMillis()).nextInt(9) + 1];  // 1-10
         for (int i = 0; i < iAr.length; i++) {
-            iAr[i] = new Random().nextInt(Integer.MAX_VALUE) - Integer.MAX_VALUE / 2;   //   new Random().nextInt(1000)-500  -> (-500 500)
+            // iAr[i] = new Random().nextInt(Integer.MAX_VALUE) - Integer.MAX_VALUE / 2;   //   new Random().nextInt(1000)-500  -> (-500 500)
+            iAr[i] = new Random().nextInt(1000);   //   new Random().nextInt(1000)-500  -> (-500 500)
         }
 
         return iAr;

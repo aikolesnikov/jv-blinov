@@ -1,5 +1,6 @@
 package datatypes;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 
 class MedicalStaff {}
@@ -54,6 +55,17 @@ public class Tries {
             System.out.println ("HeadDoctor");
         }
 
+        System.out.println();
+
+        int[] ar = new int[]{};
+        if (ar instanceof Object){
+            System.out.println("yes");
+        }
+
+        System.out.println();
+
+        char[] chAr = (new Integer("123")).toString().toCharArray();
+        System.out.println(chAr.length);
 
     }
 }
